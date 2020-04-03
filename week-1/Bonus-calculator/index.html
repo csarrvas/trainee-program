@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Trainee Program | Bonus-calculator</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-week"></i> Week 1</a>
+                        <ul>
+                            <li><a href="../ToDo-list/index.html"><i class="fas fa-list-ol"></i> ToDo-list</a></li>
+                            <li><a href="#"><i class="fas fa-calculator"></i> Bonus-calculator</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div id="form">
+                <form action="" method="post">
+                    <fieldset>
+                        <legend>Bonus calculator</legend>
+                        <div>
+                            <label for="salary">Monthly salary:</label>
+                            <input type="number" name="salary" id="salary" min="0" required>
+                        </div>
+                        <div>
+                            <label for="years">Years worked:</label>
+                            <input type="number" name="years" id="years" min="0" required>
+                        </div>
+                        <div>
+                            <label for="days">Days worked this year:</label>
+                            <input type="number" name="days" id="days" min="0" required>
+                        </div>
+                        <div>
+                            <input type="submit" value="Calculate" disabled>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="loader">Loading...</div>
+        </main>
+        <footer>Trainee Program | JavaScript && React | 2020</footer>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

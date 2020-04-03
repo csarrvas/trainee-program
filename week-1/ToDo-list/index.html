@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/favicon.ico">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Trainee Program | ToDo-list</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-week"></i> Week 1</a>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-list-ol"></i> ToDo-list</a></li>
+                            <li><a href="../Bonus-calculator/index.html"><i class="fas fa-calculator"></i> Bonus-calculator</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div id="form">
+                <form action="" method="POST" id="newTask">
+                    <fieldset>
+                        <legend>Enter a new task</legend>
+                        <div>
+                            <label for="id">ID:</label>
+                            <input type="text" name="id" id="id" readonly>
+                        </div>
+                        <div>
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" maxlength="100" required>
+                        </div>
+                        <div>
+                            <label for="assignee">Assignee:</label>
+                            <select name="assignee" id="assignee" required>
+                                <option value="" disabled selected>Select a person</option>
+                                <option value="1">Frank</option>
+                                <option value="2">John</option>
+                                <option value="3">Alice</option>
+                                <option value="4">Mary</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p>Status:</p>
+                            <div>
+                                <label for="done">Done:</label>
+                                <input type="checkbox" name="status" id="done">
+                            </div>
+                        </div>
+                        <div class="switch">
+                            <div class="spinner">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+                            </div>
+                            <input type="submit" value="Create task" disabled>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="tasks">
+                <p>Added tasks</p>
+                <div id="tools">
+                    <fieldset>
+                        <legend>Tools</legend>
+                        <div>
+                            <label for="search">Search:</label>
+                            <input type="text" name="search" id="search">
+                        </div>
+                        <div>
+                            <label for="">Status:</label>
+                            <div>
+                                <div>
+                                    <input type="radio" name="statusCheck" id="statusBoth" value="1">
+                                    <label for="statusBoth">Both</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="statusCheck" id="statusPending" value="2">
+                                    <label for="statusPending">Pending</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="statusCheck" id="statusDone" value="3">
+                                    <label for="statusDone">Done</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Sort:</label>
+                            <div>
+                                <div>
+                                    <input type="radio" name="sort" id="byId" value="1">
+                                    <label for="byId">By ID</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="sort" id="byDate" value="2">
+                                    <label for="byDate">By Date</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="scrollable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Assignee</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="spinner" id="spinner2">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+                <div id="removeAll"><a href="#">Delete all tasks</a></div>
+            </div>
+        </main>
+        <footer>Trainee Program | JavaScript && React | 2020</footer>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

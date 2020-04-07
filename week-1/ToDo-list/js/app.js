@@ -1,4 +1,4 @@
-/*------------------------------VARIABLES PRINCIPALES------------------------------*/
+/*------------------------------VARIABLES------------------------------*/
 const idInput = document.getElementById('id');
 const nameInput = document.getElementById('name');
 const assigneeInput = document.getElementById('assignee');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     generateID();
 });
 
-// Validación para el enable / disable del Create task
+// Validation enable / disable of Create task
 form.addEventListener('input', () => {
     if(idInput.value === '' || nameInput.value === '' || assigneeInput.value === '') {
         inputSubmit.setAttribute('disabled', '');
@@ -30,18 +30,18 @@ form.addEventListener('input', () => {
     }
 });
 
-//Listener al submit del formulario
+//Listener to submit of the form
 form.addEventListener('submit', e => {
     e.preventDefault();
     validations();
 });
 
-//Listener al menú de tools (search)
+//Listener of tools (search)
 search.addEventListener('keyup', e => {
     toolSearch(e.target.value);
 });
 
-//Listener al menú de tools (status / sort)
+//Listener of tools (status / sort)
 tools.addEventListener('click', e => {
     if(e.target.hasAttribute('name')) {
         const name = e.target.getAttribute('name');
@@ -54,16 +54,16 @@ tools.addEventListener('click', e => {
     }
 });
 
-//Listener a editar de cada elemento
+//Listener to edit / remove each element
 tbody.addEventListener('click', e => {
     e.preventDefault();
-    spinner2.style.display = 'block';
-    setTimeout(() => {
-        window.scrollTo(0,0);
-        inputSubmit.style.display = 'block';
-        spinner2.style.display = 'none';
-    }, 2000);
     if(e.target.className === 'edit') {
+        spinner2.style.display = 'block';
+        setTimeout(() => {
+            window.scrollTo(0,0);
+            inputSubmit.style.display = 'block';
+            spinner2.style.display = 'none';
+        }, 2000);
         const tasks = getTasksFromLS();
         tasks.forEach(task => {
             if(task.id == e.target.getAttribute('data-id')) {
@@ -73,16 +73,11 @@ tbody.addEventListener('click', e => {
             }
         });
     }
-});
-
-//Listener al remove de cada elemento
-tbody.addEventListener('click', e => {
-    e.preventDefault();
-    spinner2.style.display = 'block';
-    setTimeout(() => {
-        spinner2.style.display = 'none';
-    }, 2000);
-    if(e.target.className === 'remove') {
+    else if(e.target.className === 'remove') {
+        spinner2.style.display = 'block';
+        setTimeout(() => {
+            spinner2.style.display = 'none';
+        }, 2000);
         e.target.parentElement.parentElement.remove();
         removeTaskFromLS(parseInt(e.target.getAttribute('data-id')));
     }
@@ -102,9 +97,9 @@ removeAll.addEventListener('click', e => {
     generateID();
 });
 
-/*------------------------------FUNCIONES------------------------------*/
+/*------------------------------FUNCTIONS------------------------------*/
 
-//Cargando elemento a editar
+//Loading element to edit
 function loadToDom (toEdit) {
     idInput.value = toEdit.id;
     nameInput.value = toEdit.name;
@@ -115,7 +110,7 @@ function loadToDom (toEdit) {
     inputSubmit.setAttribute('value', 'Edit tasks');
 }
 
-//Continuación al search
+//Continuation of search
 function toolSearch(search) {
     let el = tbody.firstElementChild;
     let all = [];
@@ -134,7 +129,7 @@ function toolSearch(search) {
     });
 }
 
-//Continuación al status
+//Continuation of status
 function toolStatus(status) {
     let el = tbody.firstElementChild;
     do {
@@ -154,7 +149,7 @@ function toolStatus(status) {
     } while(el);
 }
 
-//Continuación al sort
+//Continuation of sort
 function toolSort(sort) {
     let el = tbody.firstElementChild;
     let order1 = [];
@@ -197,7 +192,7 @@ function toolSort(sort) {
     }
 }
 
-//Generador del ID
+//ID generator
 function generateID() {
     if(getTasksFromLS().length === 0) {
         idInput.value = 0;
@@ -210,7 +205,7 @@ function generateID() {
     }
 }
 
-//Validaciones a los tasks a ingresar
+//Validations of tasks to enter
 function validations() {
     const id = parseInt(idInput.value.trim());
     const name = nameInput.value.trim();
@@ -261,7 +256,7 @@ function validations() {
     }
 }
 
-//Errores si no se pasan las validaciones
+//Mistakes in validations
 function printErrors(errors) {
     const div = document.createElement('div');
     div.id = 'errors';
@@ -276,7 +271,7 @@ function printErrors(errors) {
     }, 4000);
 }
 
-//Añadiendo tasks
+//Adding tasks
 function addTask(task) {
     if(typeof editable != 'undefined') {
         removeTaskFromLS(parseInt(editable.id));
@@ -303,7 +298,7 @@ function addTask(task) {
     
 }
 
-//Al DOM
+//To DOM
 function addToDom(tasks) {
     document.getElementById('tasks').style.display = 'block';
     if(!Array.isArray(tasks)) {
@@ -337,7 +332,7 @@ function addToDom(tasks) {
     });
 }
 
-//Al localStorage
+//To localStorage
 function addToLS(task) {
     const tasks = getTasksFromLS();
     tasks.push(task);
@@ -345,7 +340,7 @@ function addToLS(task) {
     generateID();
 }
 
-//Cargando todas las tasks al DOM en un inicio
+//Loading all the tasks to DOM at the beginning
 function setTasksToDom() {
     const tasks = getTasksFromLS();
     if(tasks.length > 0) {
@@ -358,7 +353,7 @@ function setTasksToDom() {
     }
 }
 
-//Retorna un array con las task desde el localStorage
+//Return array with task from localStorage
 function getTasksFromLS() {
     let tasks;
     if(localStorage.getItem('tasks') === null) {
@@ -370,7 +365,7 @@ function getTasksFromLS() {
     return tasks;
 }
 
-//Elimina un task en específico del localStorage
+//Delete task of localStorage
 function removeTaskFromLS(id) {
     const tasks = getTasksFromLS();
     tasks.forEach(function(task, index) {

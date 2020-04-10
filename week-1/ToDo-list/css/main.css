@@ -83,6 +83,7 @@ tbody tr td a,
     color: #fff;
     background-color: darkred;
     border-radius: 10px;
+    width: 100%;
 }
 tbody tr td a {
     width: 65%;

@@ -36,29 +36,20 @@
             <div id="form">
                 <form action="" method="post">
                     <fieldset>
-                        <legend>Bonus calculator</legend>
+                        <legend>User Search</legend>
                         <div>
-                            <label for="salary">Monthly salary:</label>
-                            <input type="number" name="salary" id="salary" min="0" required>
+                            <label for="profile">Github profile:</label>
+                            <input type="text" name="user" id="user" required>
                         </div>
                         <div>
-                            <label for="years">Years worked:</label>
-                            <input type="number" name="years" id="years" min="0" required>
-                        </div>
-                        <div>
-                            <label for="days">Days worked this year:</label>
-                            <input type="number" name="days" id="days" min="0" required>
-                        </div>
-                        <div>
-                            <input type="submit" value="Calculate" disabled>
+                            <input type="submit" value="Search" disabled>
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <div class="loader">Loading...</div>
         </main>
         <footer>Trainee Program | JavaScript && React | 2020</footer>
     </div>
-    <script src="js/app.js"></script>
+    <script src="js/app.js" type="module"></script>
 </body>
 </html>

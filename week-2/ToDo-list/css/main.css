@@ -181,7 +181,7 @@ tr:nth-child(even) {
   text-align: center;
   margin: 20px 0px 10px 25%;
   padding: 20px 0px;
-  border-color: cornsilk 1px solid;
+  border: cornsilk 1px solid;
   border-radius: 7px;
   width: 50%;
   color: #fff;

@@ -9,7 +9,7 @@ export class LocalStorage {
       localStorage.setItem('tasks', JSON.stringify([]));
     }
 
-    Array.prototype.orderByNumber = function(property, sortOrder){
+    Array.prototype.orderByNumber = function(property, sortOrder) {
       if (sortOrder != -1 && sortOrder != 1) sortOrder = 1;
       this.sort(function (a, b) {
         return (a[property] - b[property]) * sortOrder;

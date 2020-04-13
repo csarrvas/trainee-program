@@ -78,8 +78,12 @@ p {
 }
 
 main {
-    background-image: linear-gradient(135deg, #FF4040 0%, #CE3838 10%, #2B2D42 70%);
     flex: 1;
+    background-image: url(../../../images/background.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 footer {

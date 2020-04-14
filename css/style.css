@@ -1,6 +1,6 @@
 html {
-    box-sizing: border-box;
-    min-height: 100%;
+  box-sizing: border-box;
+  min-height: 100%;
 }
 
 *, *:before, *:after {
@@ -8,88 +8,88 @@ box-sizing: inherit;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
-    background-color: #2B2D42;
-    color: #fff;
+  background-color: #2B2D42;
+  color: #fff;
 }
 
 header ul {
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
 
 header ul li {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 li a {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 li ul a {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
 li a:hover {
-    background-color: #3F51B5;
+  background-color: #3F51B5;
 }
 
 a {
-    color: #fff;
-    text-decoration: none;
-    padding: 20px 0px;
+  color: #fff;
+  text-decoration: none;
+  padding: 20px 0px;
 }
 p {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 @media screen and (min-width: 768px) {
-    nav > ul {
-        flex-direction: row;
-    }
-    header ul li {
-        position: relative;
-        flex: 1 1 100%;
-    }
-    li > ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0px;
-        background-color: #1a2770;
-        width: 100%;
-    }
-    li:hover ul {
-        display: flex;
-    }
+  nav > ul {
+    flex-direction: row;
+  }
+  header ul li {
+    position: relative;
+    flex: 1 1 100%;
+  }
+  li > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    background-color: #1a2770;
+    width: 100%;
+  }
+  li:hover ul {
+    display: flex;
+  }
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 main {
-    flex: 1;
-    background-image: url(../../../images/background.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  flex: 1;
+  background-image: url(../../../images/background.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 footer {
-    display: flex;
-    background-color: #222;
-    color: white;
-    justify-content: center;
-    padding: 15px 0px;
+  display: flex;
+  background-color: #222;
+  color: white;
+  justify-content: center;
+  padding: 15px 0px;
 }

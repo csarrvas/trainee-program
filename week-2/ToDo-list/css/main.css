@@ -1,5 +1,5 @@
 main {
-    padding: 20px;
+  padding: 20px;
 }
 
 #tasks {
@@ -276,8 +276,6 @@ tr:nth-child(even) {
     -webkit-transform: scaleY(1.0);
   }
 }
-
-
 
 #spinnerForm {
   display: none;

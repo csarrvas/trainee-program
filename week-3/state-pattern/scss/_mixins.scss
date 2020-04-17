@@ -1,0 +1,15 @@
+@mixin tablet {
+  @media (min-width: #{$tablet}){
+      @content;
+  }
+}
+@mixin smallScreen {
+  @media (min-width: #{$smallScreen}){
+      @content;
+  }
+}
+@mixin bigScreen {
+  @media (min-width: #{$bigScreen}){
+      @content;
+  }
+}

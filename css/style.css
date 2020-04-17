@@ -29,15 +29,15 @@ header ul li {
   flex-direction: column;
 }
 
-li a {
+header li a {
   padding-left: 15px;
 }
 
-li ul a {
+header li ul a {
   padding-left: 30px;
 }
 
-li a:hover {
+header li a:hover {
   background-color: #3F51B5;
 }
 
@@ -52,14 +52,14 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-  nav > ul {
+  header nav > ul {
     flex-direction: row;
   }
   header ul li {
     position: relative;
     flex: 1 1 100%;
   }
-  li > ul {
+  header li > ul {
     display: none;
     position: absolute;
     top: 100%;
@@ -67,7 +67,7 @@ p {
     background-color: #1a2770;
     width: 100%;
   }
-  li:hover ul {
+  header li:hover ul {
     display: flex;
   }
 }
@@ -79,7 +79,7 @@ p {
 
 main {
   flex: 1;
-  background-image: url(../../../images/background.jpg);
+  background-image: url(../images/background.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

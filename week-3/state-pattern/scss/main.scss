@@ -1,0 +1,291 @@
+@import 'variables';
+@import 'mixins';
+
+main {
+  nav {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+  }
+
+  ul {
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+    @include tablet {
+      grid-template: 1fr / repeat(2, 1fr);
+    }
+
+    @include smallScreen {
+      grid-template: 1fr / repeat(3, 1fr);
+    }
+
+    @include bigScreen {
+      grid-template: 1fr / repeat(6, 1fr);
+    }
+  }
+
+  li {
+    width: 150px;
+  }
+
+  a {
+    padding: 20px 10px;
+    transition-duration: 0.5s;
+    border-radius: 10px;
+    background-color: $primaryColor;
+    display: block;
+    width: 100%;
+    
+    &:hover {
+      background-color: $secondColor;
+    }
+
+    &.active {
+      box-shadow: inset 0px 0px 0px 2px white;
+    }
+  }
+}
+
+#state {
+  .section {
+    color: white;
+    margin-left: 10%;
+    margin-top: 25px;
+    padding: 5px 15px;
+    display: inline-block;
+    background-color: $primaryColor;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  #tags,
+  #lastPosts,
+  #remainingPosts,
+  #fields,
+  #complete_post {
+    border: 2px solid $primaryColor;
+    padding: 15px;
+    border-radius: 15px;
+    width: 95%;
+    margin: 0px auto;
+  }
+
+  #tags {
+    display: grid;
+    gap: 1.5rem;
+    grid-template: 1fr / repeat(2, 1fr);
+    font-size: 1.1rem;
+    background-color: $transparency;
+    color: white;
+
+    @include tablet {
+      grid-template: 1fr / repeat(3, 1fr);
+    }
+
+    @include smallScreen {
+      grid-template: 1fr / repeat(6, 1fr);
+    }
+  }
+
+  #lastPosts,
+  #remainingPosts {
+    background-color: $transparency;
+    display: grid;
+
+    @include smallScreen {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  #remainingPosts {
+    margin-bottom: 15px;
+  }
+
+  figure {
+    margin: 10px 0px;
+  }
+
+  img {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+
+    @include tablet {
+      width: 80%;
+    }
+
+    @include smallScreen {
+      width: 60%;
+    }
+  }
+
+  figcaption {
+    p {
+      font-size: 1.3rem;
+      text-align: center;
+      margin: 10px auto;
+    }
+  }
+
+  article {
+    width: 90%;
+    margin: 25px auto;
+    padding: 25px;
+    background-color: $thirdColor;
+    border: 2px solid black;
+  }
+
+  .subTitle,
+  .createDate {
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  .createDate {
+    text-align: right;
+  }
+
+  .tags {
+    margin-top: 10px;
+  }
+
+  #fields {
+    display: grid;
+    
+    div {
+      position: relative;
+    }
+
+    input,
+    select,
+    textarea {
+      display: flex;
+      justify-self: center;
+      height: 40px;
+      width: 90%;
+      margin: 0px auto;
+      margin-bottom: 25px;
+      border: 1px solid white;
+      border-radius: 10px;
+      background-color: #555;
+      color: white;
+      transition-duration: 0.5s;
+
+      &:focus {
+        background-color: #777;
+        outline: none;
+
+        + label {
+          font-size: 0.6rem;
+        }
+      }
+    }
+
+    textarea {
+      height: 200px;
+      resize: none;
+    }
+
+    input[type="submit"] {
+      width: auto;
+      padding: 5px 15px;
+      margin-bottom: 0px;
+      border: none;
+      background-color: $primaryColor;
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $secondColor;
+      }
+    }
+
+    label {
+      position: absolute;
+      left: 10%;
+      top: 0px;
+      transition-duration: 0.5s;
+      font-size: 0.8rem;
+    }
+
+    @include tablet {
+      width: 80%;
+    }
+
+    @include smallScreen {
+      width: 60%;
+    }
+  }
+}
+
+#fieldset_post {
+  @include tablet {
+    margin-left: 25% !important;
+  }
+}
+
+#availableTags {
+  padding: 10px 0px;
+  color: white;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px 0px;
+
+  button {
+    padding: 10px 30px;
+  }
+}
+
+#complete_post {
+  @include tablet {
+    width: 80% !important;
+  }
+
+  @include smallScreen {
+    width: 60% !important;
+  }
+}
+
+span {
+  display: inline-block;
+  font-weight: 500;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+#search_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  input {
+    margin: 10px auto;
+
+    @include tablet {
+      width: 40% !important;
+    }
+  }
+
+  button {
+    margin: 0px auto;
+    margin-bottom: 25px;
+    width: 150px;
+  }
+}

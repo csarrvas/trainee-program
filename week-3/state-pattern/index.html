@@ -8,8 +8,8 @@
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Roboto:400,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="../../css/style.css">
-  <!-- <link rel="stylesheet" href="css/main.css"> -->
-  <title>Example | State Pattern</title>
+  <link rel="stylesheet" href="css/main.css">
+  <title>DevPosts</title>
 </head>
 <body>
   <div class="container">
@@ -38,9 +38,21 @@
       </nav>
     </header>
     <main>
-      <h1 style="color: white;">In progress...</h1>
+      <nav>
+        <p>Actions:</p>
+        <ul>
+          <li><a href="#" id="homepage"><i class="fas fa-file-alt"></i> Summary</a></li>
+          <li><a href="#" id="create-page"><i class="fas fa-file-upload"></i> Create post</a></li>
+          <li><a href="#" id="single-page"><i class="fas fa-eye"></i> Look a post</a></li>
+          <li><a href="#" id="search-page"><i class="fas fa-search"></i> Search post</a></li>
+          <li><a href="#" id="delete-page"><i class="fas fa-trash-alt"></i> Delete post</a></li>
+          <li><a href="#" id="edit-page"><i class="fas fa-edit"></i> Edit post</a></li>
+        </ul>
+      </nav>
+      <div id="state"></div>
     </main>
     <footer>Trainee Program | JavaScript && React | 2020</footer>
   </div>
+  <script src="js/app.js" type="module"></script>
 </body>
 </html>

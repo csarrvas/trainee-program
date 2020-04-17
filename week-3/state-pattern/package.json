@@ -1,0 +1,16 @@
+{
+  "name": "state-pattern",
+  "version": "1.0.0",
+  "description": "Assignment week 3",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "César Rivas",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.0.2"
+  }
+}

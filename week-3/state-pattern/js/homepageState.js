@@ -1,10 +1,9 @@
 import {UI} from './ui.js';
 
 export class HomepageState {
-  constructor(page, db) {
-    this.page = page;
+  constructor(db) {
     this.db = db;
-    console.log(db);
+    this.ui = new UI();
     this.init();
   }
 
@@ -76,7 +75,7 @@ export class HomepageState {
       </section>
     `;
 
-    UI.hideArticles();
+    this.ui.hideArticles();
   }
 
   tagsName(fullTags, eachTagsPost) {

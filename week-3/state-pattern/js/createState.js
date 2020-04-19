@@ -1,9 +1,9 @@
 import {UI} from './ui.js';
 
 export class CreateState {
-  constructor(page, db) {
-    this.page = page;
-    this.db = db;  
+  constructor(db) {
+    this.db = db;
+    this.ui = new UI();
 
     this.init();
   }
@@ -57,7 +57,7 @@ export class CreateState {
       </form>
       `;
 
-    UI.createArticles(this.db, this.action);
+    this.ui.createArticles(this.db);
   }
 
   today() {

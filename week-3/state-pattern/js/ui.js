@@ -1,8 +1,9 @@
 import { Localstorage } from './localStorage.js';
 const ls = new Localstorage();
+const MESSAGE_DURATION = 3000;
 
 export class UI {
-  static hideArticles() {
+  hideArticles() {
     if (document.getElementById('search_div')) {
       document.getElementById('search_div').remove();
     }
@@ -15,41 +16,43 @@ export class UI {
     
     filters.forEach(filter => {
       filter.addEventListener('click', () => {
-        hide();
+        this.hide(filters, articles);
       });
     });
 
-    function hide() {
-      const tagsSelected = [];
-      
-      filters.forEach(filter => {
-        if (filter.checked) {
-          tagsSelected.push(filter.nextElementSibling.textContent.trim());
-        }
+    
+  }
+
+  hide(filters, articles) {
+    const tagsSelected = [];
+    
+    filters.forEach(filter => {
+      if (filter.checked) {
+        tagsSelected.push(filter.nextElementSibling.textContent.trim());
+      }
+    });
+
+    if (!tagsSelected.length) {
+      articles.forEach(article => {
+        article.style.display = 'block';
       });
 
-      if (!tagsSelected.length) {
-        articles.forEach(article => {
-          article.style.display = 'block';
-        });
+    } else {
+      articles.forEach(article => {
+        article.style.display = 'none';
+      });
 
-      } else {
+      tagsSelected.forEach(tag => {
         articles.forEach(article => {
-          article.style.display = 'none';
+          if (article.lastElementChild.firstElementChild.textContent.includes(tag)) {
+            article.style.display = 'block';
+          }
         });
-  
-        tagsSelected.forEach(tag => {
-          articles.forEach(article => {
-            if (article.lastElementChild.firstElementChild.textContent.includes(tag)) {
-              article.style.display = 'block';
-            }
-          });
-        });
-      }
+      });
     }
   }
 
-  static createArticles(db) {
+  createArticles(db) {
     if (document.getElementById('search_div')) {
       document.getElementById('search_div').remove();
     }
@@ -57,71 +60,68 @@ export class UI {
       document.getElementById('buttons').remove();
     }
 
-    const title_input = document.getElementById('title_input');
-    const subTitle_input = document.getElementById('subtitle_input');
-    const image_input = document.getElementById('url_input');
-    const body_input = document.getElementById('body_input');
-    const date_input = document.getElementById('date_input');
-    const author_input = document.getElementById('author_input');
-    const tags_input = document.getElementById('tags_input');
     const form = document.querySelector('form');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      validations();
+      this.validations(form, db);
     });
+  }
 
-    function validations() {
-      let post = {};
-      const title = title_input.value.trim();
-      const subTitle = subTitle_input.value.trim();
-      const image = image_input.value.trim();
-      const body = body_input.value.trim();
-      const date = new Date(date_input.value.trim());
-      const author = parseInt(author_input.value.trim());
-      const tags = tags_input.value.trim();
+  validations(form, db) {
+    let post = {};
+    const title = document.getElementById('title_input').value.trim();
+    const subTitle = document.getElementById('subtitle_input').value.trim();
+    const image = document.getElementById('url_input').value.trim();
+    const body = document.getElementById('body_input').value.trim();
+    const date = new Date(document.getElementById('date_input').value.trim());
+    const author = parseInt(document.getElementById('author_input').value.trim());
+    const tags = document.getElementById('tags_input').value.trim();
 
-      if (title, subTitle, image, body, date, author, tags) {
-        post = {
-          id: ls.getNextId(),
-          title: title,
-          subTitle: subTitle,
-          image: image,
-          body: body,
-          createDate: `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
-          likes: 0,
-          author: author,
-          tags: fromTagsToTagsId(tags.split(', '))
-        }
+    if (title, subTitle, image, body, date, author, tags) {
+      post = {
+        id: ls.getNextId(),
+        title: title,
+        subTitle: subTitle,
+        image: image,
+        body: body,
+        createDate: `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`,
+        likes: 0,
+        author: author,
+        tags: this.fromTagsToTagsId(tags.split(', '))
       }
+    }
 
-      if (post) {
-        db.posts.push(post);
-        ls.saveAll(db);
+    if (post) {
+      db.posts.push(post);
+      ls.saveAll(db);
+
+      this.printMessage('Successfully added', 'confirm');
+
+      setTimeout(() => {
         form.reset();
+      }, MESSAGE_DURATION);
+      
+    } else {
+      this.printMessage('The post could not be added', 'error');
+    }
+  }
 
-      } else {
-        //error message
+  fromTagsToTagsId(tags) {
+    const db = ls.getAll();
+    const tagsObject = db.tags;
+
+    let i;
+    const tagsId = [];
+
+    tagsObject.forEach((tag) => {
+      i = tags.indexOf(tag.name);
+
+      if (i !== -1) {
+        tagsId.push(tag.id);
       }
-    }
-
-    function fromTagsToTagsId(tags) {
-      const db = ls.getAll();
-      const tagsObject = db.tags;
-
-      let i;
-      const tagsId = [];
-
-      tagsObject.forEach((tag) => {
-        i = tags.indexOf(tag.name);
-
-        if (i !== -1) {
-          tagsId.push(tag.id);
-        }
-      });
-
-      return tagsId;
-    }
+    });
+    return tagsId;
   }
 
   displayPost() {
@@ -153,6 +153,7 @@ export class UI {
     like.addEventListener('click', () => {
       ls.giveALike();
       this.printPost(parseInt(ls.getMove('next')));
+      this.printPost(parseInt(ls.getMove('previous')));
     });
 
     next.addEventListener('click', () => {
@@ -251,8 +252,9 @@ export class UI {
       const id = ls.getIdByTitle(document.getElementById('search_input').value.trim());
       if (id != -1) {
         this.printPost(id);
+        this.printMessage('Successfully found', 'confirm');
       } else {
-        //No found
+        this.printMessage('This title does not exist', 'error');
       }
     });
   }
@@ -286,6 +288,7 @@ export class UI {
     deletePost.addEventListener('click', () => {
       ls.deletePost();
       this.printPost(parseInt(ls.getMove('next')));
+      this.printMessage('Post removed', 'confirm');
     });
 
     next.addEventListener('click', () => {
@@ -328,6 +331,7 @@ export class UI {
 
       ls.editPost(image, title, subTitle, body);
 
+      this.printMessage('Post edited', 'confirm');
     });
 
     next.addEventListener('click', () => {
@@ -342,6 +346,9 @@ export class UI {
     document.getElementById('state').innerHTML = `
       <p class="section" id="fieldset_post">Edit post:</p>
       <form id="fields">
+        <figure class="image">
+          <img src="${db.posts[i].image}" alt="${db.posts[i].title}">
+        </figure>
         <div>
           <input type="text" id="url_input" name="url_input" value="${db.posts[i].image}" required>
           <label for="url_input">URL of an image</label>
@@ -364,5 +371,23 @@ export class UI {
         </div>
       </form>
     `;
+  }
+
+  printMessage(message, type) {
+    const div = document.createElement('div');
+    div.id = 'message';
+    if (type === 'confirm') {
+      div.className = 'confirm';
+
+    } else if (type === 'error') {
+      div.className = 'error';
+    }
+    div.innerHTML = `<p>${message}</p>`;
+
+    document.querySelector('main').appendChild(div);
+
+    setTimeout(() => {
+      div.remove();
+    }, MESSAGE_DURATION);
   }
 }

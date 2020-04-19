@@ -2,6 +2,7 @@
 @import 'mixins';
 
 main {
+  padding-bottom: 10px;
   nav {
     padding: 20px;
     display: flex;
@@ -287,5 +288,24 @@ span {
     margin: 0px auto;
     margin-bottom: 25px;
     width: 150px;
+  }
+}
+
+#message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 50%;
+  color: white;
+  height: 25px;
+  margin: 10px auto;
+  padding: 20px 50px;
+
+  &.confirm {
+    background-color: darkgreen;
+  }
+  &.error {
+    background-color: darkred;
   }
 }

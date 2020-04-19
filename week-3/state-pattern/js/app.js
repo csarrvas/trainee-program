@@ -54,38 +54,38 @@ linkHomepage.addEventListener('click', (e) => {
   e.preventDefault();
   selected(e.target);
   db = ls.getAll();
-  page.change(new HomepageState(page, db));
+  page.change(new HomepageState(db));
 });
 
 linkCreate.addEventListener('click', (e) => {
   e.preventDefault();
   selected(e.target);
   db = ls.getAll();
-  page.change(new CreateState(page, db));
+  page.change(new CreateState(db));
 });
 
 linkSingle.addEventListener('click', (e) => {
   e.preventDefault();
   selected(e.target);
-  page.change(new SingleState(page, data));
+  page.change(new SingleState());
 });
 
 linkSearch.addEventListener('click', (e) => {
   e.preventDefault();
   selected(e.target);
-  page.change(new SearchState(page, data));
+  page.change(new SearchState());
 });
 
 linkDelete.addEventListener('click', (e) => {
   e.preventDefault();
   selected(e.target);
-  page.change(new DeleteState(page, data));
+  page.change(new DeleteState());
 });
 
 linkEdit.addEventListener('click', (e) => {
   e.preventDefault();
   selected(e.target);
-  page.change(new EditState(page, data));
+  page.change(new EditState());
 });
 
 function selected(link) {

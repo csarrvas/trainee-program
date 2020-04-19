@@ -1,10 +1,7 @@
 import {UI} from './ui.js';
 
 export class SearchState {
-  constructor(page, db) {
-    this.page = page;
-    this.db = db;
-
+  constructor() {
     this.init();
   }
 
